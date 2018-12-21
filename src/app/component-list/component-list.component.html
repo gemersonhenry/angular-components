@@ -1,13 +1,77 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <app-button></app-button>
+      <app-button buttonSize="small">        
+      </app-button>
     </div>
     <div class="col">
-      <app-button></app-button>
+      <app-button>
+      </app-button>
     </div>
     <div class="col">
-      <app-button></app-button>
+      <app-button buttonSize="large">
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button buttonSize="large" buttonBorder="small">        
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button buttonSize="large" buttonBorder="normal">
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button buttonSize="large" buttonBorder="large">
+      </app-button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <app-button>        
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button buttonType="secondary" buttonText="Siguiente">
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button buttonType="success" buttonText="Nuevo pago">
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button buttonType="danger" buttonText="Volver">        
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button buttonType="warning" buttonText="Ir a mis productos">
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button buttonType="info" buttonText="Continuar">
+      </app-button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <app-button [fullWidth]="true" buttonText="Ir a mis productos">
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button [fullWidth]="true" buttonType="success" [disabled]="true">
+      </app-button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <app-button [useConfigKnown]="false" externalClasses="btn btn-primary">
+      </app-button>
+    </div>
+    <div class="col">
+      <app-button [useConfigKnown]="false" externalClasses="btn btn-secondary" [disabled]="true">
+      </app-button>
     </div>
   </div>
 </div>

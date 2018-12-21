@@ -1,19 +1,17 @@
 <button
-  class="gc-button"
+  gc="button"
   [ngClass]="buttonClassesObject"
-  (click)="clickEvent($event.target)">
+  (click)="click($event.target)" [disabled]="disabled">
   {{ buttonText }}
 </button>
 
 <!-- <a
-  class="gc-button"
   [ngClass]="buttonClassesObject"
   (click)="clickEvent($event.target)">
   {{ buttonText }}
-</a>
+</a> -->
 
-<span
-  class="gc-button"
+<!-- <span
   [ngClass]="buttonClassesObject"
   (click)="clickEvent($event.target)">
   {{ buttonText }}

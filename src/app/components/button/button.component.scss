@@ -1,4 +1,5 @@
 // THERE WILL BE THREE TYPES OF BUTTONS
+
 $normalButtonHeigth: 32px;
 $smallButtonHeigth: 24px; 
 $largeButtonHeigth: 40px;
@@ -7,37 +8,108 @@ $normalFontSize: 16px;
 $smallFontSize: 12px;
 $largeFontSize: 20px;
 
-$normalPadding: ($normalButtonHeigth - $normalFontSize)/2;
-$smallPadding: ($smallButtonHeigth - $smallFontSize)/2;
-$largePadding: ($largeButtonHeigth - $largeFontSize)/2;
+$normalPadding: 8px 16px;
+$smallPadding: 6px 12px;
+$largePadding: 10px 20px;
+
+$smallBorder: 4px;
+$normalBorder: 8px;
+$largeBorder: 12px;
 
 // RESETING BUTTONS
-button, a, div {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background-color: white;
-  font-family: arial;
-  font-size: 1rem;
-}
+// button, a, span {
+//   margin: 0;
+//   padding: 0;
+// }
 
 // GENERIC CLASSES
 .gc-button {
-  border: 1px solid lightgray;
+  border: none;
   text-align: center;
   box-sizing: border-box;
-  padding: 0.5rem 1.25rem;
+  text-align: center;
+  font-size: $normalFontSize;
+  height: $normalButtonHeigth;
+  line-height: $normalFontSize;
+  padding: $normalPadding;
+  transition: all 0.3 ease-in-out;
+}
+.gc-button:hover {
+  cursor: pointer;
+}
+
+// SPECIFIC CLASSES
+.gc-button--primary {
+  color: #fff;
+  background-color: #0069d9;
+}
+.gc-button--secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+.gc-button--success {
+  color: #fff;
+  background-color: #28a745;
+}
+.gc-button--danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+.gc-button--warning {
+  color: #fff;
+  background-color: #ffc107;
+}
+.gc-button--info {
+  color: #fff;
+  background-color: #17a2b8;
+}
+
+// SIZE CLASSES
+.gc-button {
+  &.normal-size {
+    height: $normalButtonHeigth;
+    line-height: $normalFontSize;
+    font-size: $normalFontSize;
+    padding: $normalPadding;
+  }
+  &.small-size {
+    height: $smallButtonHeigth;
+    line-height: $smallFontSize;
+    font-size: $smallFontSize;
+    padding: $smallPadding;
+  }
+  &.large-size {
+    height: $largeButtonHeigth;
+    line-height: $largeFontSize;
+    font-size: $largeFontSize;
+    padding: $largePadding;
+  }
 }
 
 // BORDER CLASSES
 .gc-button {
-  .normal-border {
-    border-radius: $normalButtonHeigth/8;
+  &.normal-border {
+    border-radius: $normalBorder;
   }
-  .small-border {
-    border-radius: $smallButtonHeigth/8;
+  &.small-border {
+    border-radius: $smallBorder;
   }
-  .large-border {
-    border-radius: $largeButtonHeigth/8;
+  &.large-border {
+    border-radius: $largeBorder;
+  }
+}
+
+// FULL WITH
+.gc-button {
+  &.full-width {
+    width: 100%;
+  }
+}
+
+// DISABLED BUTTON
+.gc-button {
+  &.disabled {
+    cursor: default;
+    opacity: 0.6;
   }
 }

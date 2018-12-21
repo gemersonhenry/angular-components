@@ -1,51 +1,57 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
 
   @Input() buttonText = 'Enviar';
-  @Input() defaultConfig = true;
+  @Input() useConfigKnown = true;
   @Input() buttonType = 'primary'; // class to define kind of button
   @Input() externalClasses = ''; // It will just apply when defaultConfig is false
-  private readonly externalClassKey = 'external-class';
+  @Input() buttonBorder = '';
+  @Input() buttonSize = '';
+  @Input() fullWidth = false;
+  @Input() disabled = false;
+  private readonly baseClass = 'gc-button';
+  @Output() clickEvent: EventEmitter<HTMLElement> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
-  clickEvent(target: HTMLElement): void {
+  click(target: HTMLElement): void {
     console.log('target: ', target.className);
+    this.clickEvent.emit(target);
   }
 
   public get buttonClassesObject() {
-    const buttonType = this.defaultConfig ? this.buttonType : this.externalClassKey;
-    return {
-      ...this.appliedClasses[buttonType]
-    };
+    return this.useConfigKnown ? this.appliedClasses : this.externalClasses;
   }
 
   public get appliedClasses() {
-    const externalClasses = {};
-    externalClasses[this.externalClasses] = true;
-    return {
-      'primary': {
-        'gc-button--primary': this.defaultConfig
-      },
-      'secondary': {
-        'gc-button--secondary': this.defaultConfig
-      },
-      'external-class': {
-        ...externalClasses
-      }
-    };
+    const baseClass = this.baseClass;
+    const specificClass = `${this.baseClass}--${this.buttonType}`;
+    const border = this.buttonBorder === '' ? '' : this.borderClass[this.buttonBorder];
+    const size = this.buttonSize === '' ? '' : this.sizeClass[this.buttonSize];
+    const fullWidth = this.fullWidth ? 'full-width' : '';
+    const disabledClass = this.disabled ? 'disabled' : '';
+    return [baseClass, specificClass, border, size, fullWidth, disabledClass];
   }
 
   public get borderClass() {
-    return {};
+    return {
+      'normal': 'normal-border',
+      'small': 'small-border',
+      'large': 'large-border'
+    };
+  }
+
+  public get sizeClass() {
+    return {
+      'normal': 'normal-size',
+      'small': 'small-size',
+      'large': 'large-size'
+    };
   }
 }
