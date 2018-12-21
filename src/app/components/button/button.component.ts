@@ -16,12 +16,11 @@ export class ButtonComponent {
   @Input() fullWidth = false;
   @Input() disabled = false;
   private readonly baseClass = 'gc-button';
-  @Output() clickEvent: EventEmitter<HTMLElement> = new EventEmitter();
+  @Output() clickEvent = new EventEmitter<HTMLElement>();
 
   constructor() { }
 
   click(target: HTMLElement): void {
-    console.log('target: ', target.className);
     this.clickEvent.emit(target);
   }
 
@@ -31,12 +30,12 @@ export class ButtonComponent {
 
   public get appliedClasses() {
     const baseClass = this.baseClass;
-    const specificClass = `${this.baseClass}--${this.buttonType}`;
+    const modifiedClass = `${this.baseClass}--${this.buttonType}`;
     const border = this.buttonBorder === '' ? '' : this.borderClass[this.buttonBorder];
     const size = this.buttonSize === '' ? '' : this.sizeClass[this.buttonSize];
     const fullWidth = this.fullWidth ? 'full-width' : '';
     const disabledClass = this.disabled ? 'disabled' : '';
-    return [baseClass, specificClass, border, size, fullWidth, disabledClass];
+    return [baseClass, modifiedClass, border, size, fullWidth, disabledClass];
   }
 
   public get borderClass() {

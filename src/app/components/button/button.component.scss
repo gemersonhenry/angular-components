@@ -32,7 +32,7 @@ $largeBorder: 12px;
   height: $normalButtonHeigth;
   line-height: $normalFontSize;
   padding: $normalPadding;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s linear;
 }
 .gc-button:hover {
   cursor: pointer;
