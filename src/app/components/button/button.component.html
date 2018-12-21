@@ -1,0 +1,19 @@
+<div class="buttons-wrapper">
+  <button
+    [ngClass]="buttonClassesObject"
+    (click)="clickEvent($event.target)">
+    {{ buttonText }}
+  </button>
+
+  <a
+    [ngClass]="buttonClassesObject"
+    (click)="clickEvent($event.target)">
+    {{ buttonText }}
+  </a>
+
+  <span
+    [ngClass]="buttonClassesObject"
+    (click)="clickEvent($event.target)">
+    {{ buttonText }}
+  </span>
+</div>
