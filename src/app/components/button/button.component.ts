@@ -30,15 +30,22 @@ export class ButtonComponent implements OnInit {
   }
 
   public get appliedClasses() {
-    const classes = {};
-    classes[this.externalClassKey] = {};
+    const externalClasses = {};
+    externalClasses[this.externalClasses] = true;
     return {
       'primary': {
-        'gc-button gc-button--primary': this.defaultConfig
+        'gc-button--primary': this.defaultConfig
       },
       'secondary': {
-        'gc-button gc-button--secondary': this.defaultConfig
+        'gc-button--secondary': this.defaultConfig
+      },
+      'external-class': {
+        ...externalClasses
       }
     };
+  }
+
+  public get borderClass() {
+    return {};
   }
 }

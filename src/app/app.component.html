@@ -1,4 +1,8 @@
 <nav>
-  <a routerLink="/button-component" routerLinkActive="active">Button Component</a>
+  <a *ngFor="let route of appRoutes" 
+    [routerLink]="route.path" 
+    routerLinkActive="active">
+    {{ route.text }}
+  </a>
 </nav>
 <router-outlet></router-outlet>

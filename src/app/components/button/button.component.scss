@@ -1,8 +1,17 @@
-.buttons-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-}
+// THERE WILL BE THREE TYPES OF BUTTONS
+$normalButtonHeigth: 32px;
+$smallButtonHeigth: 24px; 
+$largeButtonHeigth: 40px;
 
+$normalFontSize: 16px;
+$smallFontSize: 12px;
+$largeFontSize: 20px;
+
+$normalPadding: ($normalButtonHeigth - $normalFontSize)/2;
+$smallPadding: ($smallButtonHeigth - $smallFontSize)/2;
+$largePadding: ($largeButtonHeigth - $largeFontSize)/2;
+
+// RESETING BUTTONS
 button, a, div {
   margin: 0;
   padding: 0;
@@ -11,15 +20,24 @@ button, a, div {
   font-family: arial;
   font-size: 1rem;
 }
+
+// GENERIC CLASSES
 .gc-button {
   border: 1px solid lightgray;
   text-align: center;
   box-sizing: border-box;
   padding: 0.5rem 1.25rem;
-  &--primary {
-    background-color: #007bff;
-    color: white;
-    font-weight: bold;
-    border: none;
+}
+
+// BORDER CLASSES
+.gc-button {
+  .normal-border {
+    border-radius: $normalButtonHeigth/8;
+  }
+  .small-border {
+    border-radius: $smallButtonHeigth/8;
+  }
+  .large-border {
+    border-radius: $largeButtonHeigth/8;
   }
 }
