@@ -9,7 +9,7 @@ export class ButtonComponent {
 
   @Input() buttonText = 'Enviar';
   @Input() useConfigKnown = true;
-  @Input() buttonType = 'primary'; // class to define kind of button
+  @Input() buttonType = ''; // class to define kind of button
   @Input() externalClasses = ''; // It will just apply when defaultConfig is false
   @Input() buttonBorder = '';
   @Input() buttonSize = '';
@@ -30,19 +30,27 @@ export class ButtonComponent {
 
   public get appliedClasses() {
     const baseClass = this.baseClass;
-    const modifiedClass = `${this.baseClass}--${this.buttonType}`;
-    const border = this.buttonBorder === '' ? '' : this.borderClass[this.buttonBorder];
-    const size = this.buttonSize === '' ? '' : this.sizeClass[this.buttonSize];
+    const modifiedClass = this.buttonType === '' ? '' : `${this.baseClass}--${this.buttonType}`;
+    const border = this.borderClass[this.getValidKey(Object.keys(this.borderClass), this.buttonBorder)];
+    const size = this.sizeClass[this.getValidKey(Object.keys(this.sizeClass), this.buttonSize)];
     const fullWidth = this.fullWidth ? 'full-width' : '';
     const disabledClass = this.disabled ? 'disabled' : '';
     return [baseClass, modifiedClass, border, size, fullWidth, disabledClass];
+  }
+
+  public get buttonClass() {
+    return {
+      'primary': 'primary',
+      '': ''
+    };
   }
 
   public get borderClass() {
     return {
       'normal': 'normal-border',
       'small': 'small-border',
-      'large': 'large-border'
+      'large': 'large-border',
+      '': ''
     };
   }
 
@@ -50,7 +58,12 @@ export class ButtonComponent {
     return {
       'normal': 'normal-size',
       'small': 'small-size',
-      'large': 'large-size'
+      'large': 'large-size',
+      '': ''
     };
+  }
+
+  private getValidKey(keyArray: string[], key: string) {
+    return keyArray.includes(key) ? key : '';
   }
 }
